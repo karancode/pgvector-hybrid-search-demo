@@ -35,7 +35,7 @@ Parameters:
     Type: String
 
   DefaultCodeRepository:
-    Default: https://github.com/aws-samples/aurora-postgresql-pgvector-hybrid-search-demo.git
+    Default: https://github.com/karancode/pgvector-hybrid-search-demo
     Type: String
 
   DBEngineVersion:
@@ -192,7 +192,7 @@ Resources:
   NotebookInstance:
     Type: AWS::SageMaker::NotebookInstance
     Properties:
-      InstanceType: "ml.c5.2xlarge"
+      InstanceType: "ml.t3.medium"
       RoleArn: !GetAtt ExecutionRole.Arn
       SubnetId: !Ref Subnet1
       SecurityGroupIds:
@@ -345,7 +345,7 @@ Resources:
   RDSSecrets:
     Type: AWS::SecretsManager::Secret
     Properties:
-      Name: "apgpg-pgvector-secret"
+      Name: "hybrid-search-pgvector-secret"
       Description: 'This is the secret for Aurora cluster'
       GenerateSecretString:
         SecretStringTemplate: '{"username": "postgres" }'
